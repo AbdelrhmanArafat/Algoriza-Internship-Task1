@@ -69,7 +69,6 @@ class SignInScreen extends StatelessWidget {
                       prefixIcon: CountryCodePicker(
                         onChanged: print,
                         initialSelection: 'EG',
-                        favorite: ['+39', 'FR'],
                         showFlag: false,
                       ),
                       validator: 'Phone Number is not registered',
