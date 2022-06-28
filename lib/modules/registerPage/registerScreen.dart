@@ -5,6 +5,7 @@ import 'package:test1/components/myElevatedButton.dart';
 import 'package:test1/components/myOutlinedButton.dart';
 import 'package:test1/components/myTextButton.dart';
 import 'package:test1/components/myTextFromField.dart';
+import 'package:test1/main.dart';
 import 'package:test1/modules/signInPage/signInScreen.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -104,7 +105,7 @@ class RegisterScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SignInScreen(),
+                        builder: (context) => const MyApp(),
                       ),
                     );
                   },
