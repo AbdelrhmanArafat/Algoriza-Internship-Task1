@@ -24,14 +24,11 @@ class SignInScreen extends StatelessWidget {
           key: fromKey,
           child: Stack(
             children: [
-              Column(
-                children: const [
-                  CircleAvatar(
-                    radius: 250,
-                    backgroundImage:
-                        AssetImage('assets/images/ReadingGlassesCuate.png'),
-                  ),
-                ],
+              const CircleAvatar(
+                radius: 250,
+                backgroundColor: Colors.white,
+                backgroundImage:
+                    AssetImage('assets/images/ReadingGlassesCuate.png'),
               ),
               SingleChildScrollView(
                 child: Column(
