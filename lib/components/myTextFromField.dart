@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 class MyTextFromField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType keyboardType;
+  final bool isPassword;
   final Widget prefixIcon;
   final EdgeInsetsGeometry padding;
   final String validator;
@@ -15,6 +16,7 @@ class MyTextFromField extends StatelessWidget {
   const MyTextFromField({
     required this.controller,
     required this.keyboardType,
+    this.isPassword = false,
     required this.prefixIcon,
     this.padding = const EdgeInsets.all(10),
     required this.validator,
@@ -28,6 +30,7 @@ class MyTextFromField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: keyboardType,
+      obscureText: isPassword,
       decoration: InputDecoration(
         contentPadding: padding,
         prefixIcon: prefixIcon,

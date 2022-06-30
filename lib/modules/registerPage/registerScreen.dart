@@ -88,7 +88,8 @@ class RegisterScreen extends StatelessWidget {
                       prefixIcon: const Icon(Icons.password),
                       validator: 'Password is not registered',
                       labelText: 'Password',
-                      hintText: '',
+                      hintText: 'Enter your Password',
+                      isPassword: true,
                     ),
                     const SizedBox(height: 15),
                     MyElevatedButton(

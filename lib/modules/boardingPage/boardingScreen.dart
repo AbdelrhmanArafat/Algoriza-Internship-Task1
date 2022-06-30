@@ -32,7 +32,14 @@ class _BoardingScreenState extends State<BoardingScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   MyElevatedButton(
-                    pressed: () {},
+                    pressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignInScreen(),
+                        ),
+                      );
+                    },
                     text: 'Skip',
                     width: 50,
                   ),
