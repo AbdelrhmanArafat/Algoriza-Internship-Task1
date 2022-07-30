@@ -10,7 +10,6 @@ class MyTextFromField extends StatelessWidget {
   final Widget prefixIcon;
   final EdgeInsetsGeometry padding;
   final String validator;
-  final String labelText;
   final String hintText;
 
   const MyTextFromField({
@@ -20,7 +19,6 @@ class MyTextFromField extends StatelessWidget {
     required this.prefixIcon,
     this.padding = const EdgeInsets.all(10),
     required this.validator,
-    required this.labelText,
     required this.hintText,
     Key? key,
   }) : super(key: key);
@@ -37,12 +35,11 @@ class MyTextFromField extends StatelessWidget {
         border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.zero),
             borderSide: BorderSide(color: Colors.black)),
-        labelText: labelText,
         hintText: hintText,
       ),
       validator: (value) {
         if (value!.isEmpty) {
-          print(validator);
+          return validator;
         }
         return null;
       },

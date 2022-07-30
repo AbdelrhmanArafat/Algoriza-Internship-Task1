@@ -18,105 +18,162 @@ class _BoardingScreenState extends State<BoardingScreen> {
     'assets/images/bicycle.png',
     'assets/images/done.png',
   ];
+  final texts = [
+    Column(
+      children: const [
+        Text(
+          'Get food delivery to your doorstep asap',
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: 5),
+        Text(
+          'We have young and professional delivery'
+          'team that will bring your food as soon as'
+          'possible to your doorstep asap',
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.grey,
+          ),
+        ),
+      ],
+    ),
+    Column(
+      children: const [
+        Text(
+          'Buy Any Food from your favorite restaurant',
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: 5),
+        Text(
+          'We are constantly adding your favorite'
+          'restaurant throughout the territory and around'
+          'your area carefully selected',
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.grey,
+          ),
+        ),
+      ],
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  MyElevatedButton(
-                    pressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignInScreen(),
-                        ),
-                      );
-                    },
-                    text: 'Skip',
-                    width: 50,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 5),
-              Image.asset(
-                'assets/images/7.png',
-                cacheHeight: 80,
-              ),
-              CarouselSlider.builder(
-                itemCount: images.length,
-                itemBuilder: (context, index, realIndex) {
-                  final image = images[index];
-                  return buildImage(image, index);
-                },
-                options: CarouselOptions(
-                  height: 400,
-                  viewportFraction: 1,
-                  enableInfiniteScroll: false,
-                  onPageChanged: (index, reason) =>
-                      setState(() => activeIndex = index),
-                ),
-              ),
-              buildIndicator(),
-              const SizedBox(height: 20),
-              MyElevatedButton(
-                pressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SignInScreen(),
+          child: Container(
+            margin: const EdgeInsets.only(top: 20),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    MyElevatedButton(
+                      pressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignInScreen(),
+                          ),
+                        );
+                      },
+                      text: 'Skip',
+                      width: 80,
+                      backgroundColor: Colors.brown,
                     ),
-                  );
-                },
-                text: 'Get Started',
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Doesn\'t has any account?',
-                    style: TextStyle(fontSize: 15),
+                  ],
+                ),
+                const SizedBox(height: 5),
+                Image.asset(
+                  'assets/images/7.png',
+                  cacheHeight: 80,
+                ),
+                CarouselSlider.builder(
+                  itemCount: images.length,
+                  itemBuilder: (context, index, realIndex) {
+                    final image = images[index];
+                    final text = texts[index];
+                    return buildImage(image, text, index);
+                  },
+                  options: CarouselOptions(
+                    height: 500,
+                    viewportFraction: 1,
+                    enableInfiniteScroll: false,
+                    onPageChanged: (index, reason) =>
+                        setState(() => activeIndex = index),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterScreen(),
+                ),
+                buildIndicator(),
+                const SizedBox(height: 20),
+                MyElevatedButton(
+                  pressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignInScreen(),
+                      ),
+                    );
+                  },
+                  text: 'Get Started',
+                  width: double.infinity,
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Doesn\'t has any account?',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RegisterScreen(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 20,
                         ),
-                      );
-                    },
-                    child: const Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 20,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget buildImage(String image, int index) => Container(
+  Widget buildImage(String image, Widget text, int index) => Container(
         margin: const EdgeInsets.symmetric(horizontal: 15),
         width: double.infinity,
-        child: Image.asset(
-          image,
-          fit: BoxFit.cover,
+        child: Column(
+          children: [
+            Image.asset(
+              image,
+              fit: BoxFit.cover,
+            ),
+            const SizedBox(height: 10),
+            text,
+          ],
         ),
       );
 
@@ -125,7 +182,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
         count: images.length,
         effect: const WormEffect(
           dotColor: Colors.grey,
-          activeDotColor: Colors.orange,
+          activeDotColor: Colors.brown,
           dotWidth: 20,
           dotHeight: 20,
         ),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class MyElevatedButton extends StatelessWidget {
   final VoidCallback pressed;
-  final Color backgroundColor;
-  final double width;
+  final Color? backgroundColor;
+  final double? width;
   final double height;
   final String text;
   final Color textColor;
@@ -11,8 +11,8 @@ class MyElevatedButton extends StatelessWidget {
 
   const MyElevatedButton({
     required this.pressed,
-    this.backgroundColor = Colors.blue,
-    this.width = double.infinity,
+    this.backgroundColor,
+    this.width,
     this.height = 52,
     required this.text,
     this.textColor = Colors.white,
@@ -22,24 +22,26 @@ class MyElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return Container(
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: backgroundColor,
+      ),
+      width: width,
+      height: height,
+      child: ElevatedButton(
         onPressed: pressed,
-        child: Container(
-          color: backgroundColor,
-          width: width,
-          height: height,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                text,
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: textSize,
-                ),
-              ),
-            ],
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+              color: textColor,
+              fontSize: textSize,
+            ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

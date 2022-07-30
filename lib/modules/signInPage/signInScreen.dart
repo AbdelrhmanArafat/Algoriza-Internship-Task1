@@ -2,6 +2,7 @@
 
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:test1/components/myDivider.dart';
 import 'package:test1/components/myElevatedButton.dart';
 import 'package:test1/components/myOutlinedButton.dart';
@@ -15,109 +16,143 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final phoneController = TextEditingController();
-    final fromKey = GlobalKey<FormState>();
+    final formKey = GlobalKey<FormState>();
     return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Form(
-          key: fromKey,
-          child: Stack(
-            children: [
-              Image.asset(
-                'assets/images/ReadingGlassesCuate.png',
-                height: double.infinity,
-                width: double.infinity,
-              ),
-              SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Welcome to Fashion Daily',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    const SizedBox(height: 15),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Sign in',
-                          style: TextStyle(
-                            fontSize: 50,
-                            color: Colors.black,
+      body: Column(
+        children: [
+          Expanded(
+            child: Image.asset(
+              'assets/images/xd.png',
+              fit: BoxFit.cover,
+              height: double.infinity,
+              width: double.infinity,
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: SingleChildScrollView(
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Welcome to Fashion Daily',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Sign in',
+                            style: TextStyle(
+                              fontSize: 50,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              MyTextButton(
+                                pressed: () {},
+                                text: 'Help',
+                                icon: Icons.help,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        'Phone Number',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      MyTextFromField(
+                        controller: phoneController,
+                        keyboardType: TextInputType.phone,
+                        prefixIcon: CountryCodePicker(
+                          onChanged: print,
+                          initialSelection: 'EG',
+                          showFlag: false,
+                        ),
+                        validator: 'Phone Number is not registered',
+                        hintText: 'Eg.201147719308',
+                      ),
+                      const SizedBox(height: 15),
+                      MyElevatedButton(
+                        pressed: () {
+                          if (formKey.currentState!.validate()) {}
+                        },
+                        text: 'Sign In',
+                        width: double.infinity,
+                      ),
+                      const SizedBox(height: 20),
+                      const MyDivider(),
+                      const SizedBox(height: 20),
+                      MyOutlinedButton(
+                        pressed: () {},
+                        icon: FontAwesomeIcons.google,
+                        text: 'Sign with by Google',
+                      ),
+                      const SizedBox(height: 30),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Doesn\'t has any account?',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                          MyTextButton(
+                            pressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const RegisterScreen(),
+                                ),
+                              );
+                            },
+                            text: 'Register here',
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Center(
+                          child: Column(
+                            children: const [
+                              Text(
+                                'Use the application according to policy rules. Any ',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              Text(
+                                'kinds of violations will be subject to sanctions.',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        Row(
-                          children: [
-                            MyTextButton(
-                              pressed: () {},
-                              text: 'Help',
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 15),
-                    MyTextFromField(
-                      controller: phoneController,
-                      keyboardType: TextInputType.phone,
-                      prefixIcon: CountryCodePicker(
-                        onChanged: print,
-                        initialSelection: 'EG',
-                        showFlag: false,
                       ),
-                      validator: 'Phone Number is not registered',
-                      labelText: 'Phone Number',
-                      hintText: 'Eg.201147719308',
-                    ),
-                    const SizedBox(height: 15),
-                    MyElevatedButton(
-                      pressed: () {
-                        if (fromKey.currentState!.validate()) {}
-                      },
-                      text: 'Sign In',
-                    ),
-                    const SizedBox(height: 20),
-                    const MyDivider(),
-                    const SizedBox(height: 20),
-                    MyOutlinedButton(
-                      pressed: () {},
-                      icon: Icons.g_mobiledata,
-                      text: 'Sign with by Google',
-                    ),
-                    const SizedBox(height: 30),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('Doesn\'t has any account?'),
-                        MyTextButton(
-                          pressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const RegisterScreen(),
-                              ),
-                            );
-                          },
-                          text: 'Register here',
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    const Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                        'Use the application according to policy rules. Any kinds of violations will be subject to sanctions.',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

@@ -27,6 +27,7 @@ class MyOutlinedButton extends StatelessWidget {
             icon,
             size: iconSize,
           ),
+          const SizedBox(width: 5),
           Text(
             text,
             style: TextStyle(fontSize: textSize),
