@@ -4,9 +4,6 @@ A new Flutter project.
 
 Onboarding Page / Login page / Register page UI
 
-ftp://pc@192.168.1.102:5939/device/Download/On%20boarding%20screen.png
-
-ftp://pc@192.168.1.102:5939/device/Download/Signin%20and%20Register%20screen.png
 
 ## Getting Started
 
