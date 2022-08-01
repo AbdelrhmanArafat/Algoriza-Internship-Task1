@@ -2,9 +2,6 @@
 
 A new Flutter project.
 
-![Screenshot_20220627-195334_WPS Office](https://user-images.githubusercontent.com/74889620/182162991-e5da491e-2d9b-497e-a045-cebb6e0c1b17.png)
-
-![Screenshot_20220628-170844_WPS Office](https://user-images.githubusercontent.com/74889620/182163040-87c0ee0d-634e-4cda-bcd3-df83050c1bae.png)
 
 
 ## Getting Started
