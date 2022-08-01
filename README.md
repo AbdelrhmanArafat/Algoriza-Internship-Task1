@@ -4,8 +4,6 @@ A new Flutter project.
 
 Onboarding Page / Login page / Register page UI
 
-original-252bf42c23c0242e4b7c2a80db39bc83.webp
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
